@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Navigation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex">
+    <div class="w-64 h-screen bg-gray-800 text-white p-4 fixed">
+        <h2 class="text-xl font-bold border-b pb-2">BOLA</h2>
+        <nav class="mt-4">
+            <ul>
+                <li class="mb-2"><a href="#home" class="hover:text-gray-300" onclick="showPage('home', 'Home')">Home</a></li>
+                <li class="mb-2"><a href="#Customer" class="hover:text-gray-300" onclick="showPage('Customer', 'Customer Management')">Customer Management</a></li>
+                <li class="mb-2"><a href="#Dashboard" class="hover:text-gray-300" onclick="showPage('Dashboard', 'Dashboard')">Dashboard</a></li>
+                <li class="mb-2"><a href="#OAManagement" class="hover:text-gray-300" onclick="showPage('OAManagement', 'OA Management')">OA Management</a></li>
+                <li class="mb-2"><a href="#Chatbot" class="hover:text-gray-300" onclick="showPage('Chatbot', 'Chatbot')">Chatbot</a></li>
+                <li class="mb-2"><a href="#Broadcast" class="hover:text-gray-300" onclick="showPage('Broadcast', 'Broadcast')">Broadcast</a></li>
+                <li class="mb-2"><a href="#MediaCenter" class="hover:text-gray-300" onclick="showPage('MediaCenter', 'Media Center')">Media Center</a></li>
+                <li class="mb-2"><a href="#Calendar" class="hover:text-gray-300" onclick="showPage('Calendar', 'Calendar')">Calendar</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="ml-64 w-full">
+        <!-- Header Bar -->
+        <div class="bg-gray-100 p-4 flex justify-between items-center shadow-md">
+            <h1 id="pageTitle" class="text-lg font-semibold">Home</h1>
+            <div class="relative">
+                <button class="bg-gray-800 text-white px-4 py-2 rounded-lg">🔔 Notifications</button>
+                <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white shadow-lg p-2 rounded-lg">
+                    <p class="text-gray-700">No new notifications</p>
+                </div>
+            </div>
+        </div>
+        <!-- Page Content -->
+        <div class="p-6">
+            <div id="home" class="page">Hi Page</div>
+            <div id="Customer" class="page hidden">
+                <h2 class="text-xl font-bold mb-4">Customer Management</h2>
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border border-gray-300 p-2">Customer Name</th>
+                            <th class="border border-gray-300 p-2">Customer Gender</th>
+                            <th class="border border-gray-300 p-2">Customer Activity</th>
+                            <th class="border border-gray-300 p-2">Customer Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">John Doe</td>
+                            <td class="border border-gray-300 p-2">Male</td>
+                            <td class="border border-gray-300 p-2">Active</td>
+                            <td class="border border-gray-300 p-2">Verified</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Jane Smith</td>
+                            <td class="border border-gray-300 p-2">Female</td>
+                            <td class="border border-gray-300 p-2">Inactive</td>
+                            <td class="border border-gray-300 p-2">Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="Dashboard" class="page hidden">Dashboard Page</div>
+            <div id="OAManagement" class="page hidden">OA Management Page</div>
+            <div id="Chatbot" class="page hidden">Chatbot Page</div>
+            <div id="Broadcast" class="page hidden">Broadcast Page</div>
+            <div id="MediaCenter" class="page hidden">Media Center Page</div>
+            <div id="Calendar" class="page hidden">Calendar Page</div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId, pageTitle) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
+            document.getElementById("pageTitle").textContent = pageTitle;
+        }
+
+        document.querySelector(".bg-gray-800").addEventListener("click", function() {
+            const dropdown = document.getElementById("notificationDropdown");
+            dropdown.classList.toggle("hidden");
+        });
+    </script>
+</body>
+</html>
