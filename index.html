@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar Navigation</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="flex">
     <div class="w-64 h-screen bg-gray-800 text-white p-4 fixed">
@@ -63,7 +64,79 @@
                     </tbody>
                 </table>
             </div>
-            <div id="Dashboard" class="page hidden">Dashboard Page</div>
+            <div id="Dashboard" class="page hidden">
+                <!-- Dashboard Header -->
+                <div class="bg-white shadow-md rounded-lg p-4 mb-4">
+                    <h3 class="text-lg font-semibold">Chatbot Activity</h3>
+                </div>
+            
+                <!-- Activity Graph -->
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <canvas id="chatbotActivityChart"></canvas>
+                </div>
+            
+                <!-- Chart.js Script -->
+                <script>
+                    // Data for the Chatbot Activity Chart
+                    const labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7']; // X-axis labels for time period
+                    const data = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Chatbot Activity',
+                            data: [12, 19, 3, 5, 2, 3, 15], // Example data: number of activities for each week
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            tension: 0.1,
+                            fill: true,
+                        }]
+                    };
+            
+                    // Configuration for the Chatbot Activity Chart
+                    const config = {
+                        type: 'line', // Line chart
+                        data: data,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Chatbot Activity Over Time'
+                                },
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                legend: {
+                                    position: 'top',
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Time Period (Weeks)'
+                                    }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Activity Count'
+                                    }
+                                }
+                            }
+                        }
+                    };
+            
+                    // Render the chart on the page
+                    const chatbotActivityChart = new Chart(
+                        document.getElementById('chatbotActivityChart'),
+                        config
+                    );
+                </script>
+            </div>
+            
             <div id="OAManagement" class="page hidden"> 
                 <h2 class="text-xl font-bold mb-4">Line OA Management</h2>
                 <table class="w-full border-collapse border border-gray-300">
@@ -108,7 +181,114 @@
                     </tbody>
                 </table>
             </div>
-            <div id="Chatbot" class="page hidden">Chatbot Page</div>
+            <div id="Chatbot" class="page hidden">
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <!-- Header with Title and Create Button -->
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">Chatbot List</h3>
+                        <button onclick="createNewChatbot()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Create New Chatbot
+                        </button>
+                    </div>
+            
+                    <!-- List of Chatbots -->
+                    <div class="border-t border-gray-300">
+                        <ul id="chatbotList">
+                            <!-- Example of an existing chatbot -->
+                            <li class="flex items-center justify-between p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-300">
+                                <div class="flex items-center">
+                                    <!-- Thumbnail or Avatar for Chatbot -->
+                                    <img src="https://via.placeholder.com/50" alt="Chatbot Avatar" class="w-12 h-12 rounded-full mr-2">
+                                    <span class="text-sm font-medium text-gray-800">Chatbot 1</span>
+                                </div>
+                                <span class="text-xs text-gray-500">Active</span>
+                            </li>
+            
+                            <li class="flex items-center justify-between p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-300">
+                                <div class="flex items-center">
+                                    <img src="https://via.placeholder.com/50" alt="Chatbot Avatar" class="w-12 h-12 rounded-full mr-2">
+                                    <span class="text-sm font-medium text-gray-800">Chatbot 2</span>
+                                </div>
+                                <span class="text-xs text-gray-500">Inactive</span>
+                            </li>
+            
+                            <li class="flex items-center justify-between p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-300">
+                                <div class="flex items-center">
+                                    <img src="https://via.placeholder.com/50" alt="Chatbot Avatar" class="w-12 h-12 rounded-full mr-2">
+                                    <span class="text-sm font-medium text-gray-800">Chatbot 3</span>
+                                </div>
+                                <span class="text-xs text-gray-500">Active</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Create Chatbot Modal -->
+            <div id="createChatbotModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 hidden justify-center items-center">
+                <div class="bg-white p-6 rounded-lg w-1/3">
+                    <h3 class="text-lg font-semibold mb-4">Create a New Chatbot</h3>
+                    <form id="createChatbotForm">
+                        <div class="mb-4">
+                            <label for="chatbotName" class="block text-sm font-medium text-gray-700">Chatbot Name</label>
+                            <input type="text" id="chatbotName" name="chatbotName" class="mt-1 p-2 border border-gray-300 rounded w-full" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="chatbotAvatar" class="block text-sm font-medium text-gray-700">Chatbot Avatar</label>
+                            <input type="file" id="chatbotAvatar" name="chatbotAvatar" class="mt-1 p-2 border border-gray-300 rounded w-full" accept="image/*">
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Chatbot</button>
+                            <button type="button" onclick="closeCreateChatbotModal()" class="ml-4 bg-gray-300 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <script>
+                // Function to open the "Create New Chatbot" modal
+                function createNewChatbot() {
+                    document.getElementById('createChatbotModal').classList.remove('hidden');
+                }
+            
+                // Function to close the "Create New Chatbot" modal
+                function closeCreateChatbotModal() {
+                    document.getElementById('createChatbotModal').classList.add('hidden');
+                }
+            
+                // Form submission for creating a new chatbot
+                document.getElementById('createChatbotForm').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const chatbotName = document.getElementById('chatbotName').value;
+                    const chatbotAvatar = document.getElementById('chatbotAvatar').files[0];
+            
+                    // Add the new chatbot to the list (for demonstration purposes)
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('flex', 'items-center', 'justify-between', 'p-2', 'hover:bg-gray-100', 'cursor-pointer', 'border-b', 'border-gray-300');
+            
+                    const chatbotImage = document.createElement('img');
+                    chatbotImage.src = URL.createObjectURL(chatbotAvatar);
+                    chatbotImage.alt = 'Chatbot Avatar';
+                    chatbotImage.classList.add('w-12', 'h-12', 'rounded-full', 'mr-2');
+            
+                    const chatbotNameText = document.createElement('span');
+                    chatbotNameText.classList.add('text-sm', 'font-medium', 'text-gray-800');
+                    chatbotNameText.textContent = chatbotName;
+            
+                    const statusText = document.createElement('span');
+                    statusText.classList.add('text-xs', 'text-gray-500');
+                    statusText.textContent = 'Inactive';
+            
+                    listItem.appendChild(chatbotImage);
+                    listItem.appendChild(chatbotNameText);
+                    listItem.appendChild(statusText);
+            
+                    document.getElementById('chatbotList').appendChild(listItem);
+            
+                    // Close the modal after creating the chatbot
+                    closeCreateChatbotModal();
+                });
+            </script>
             <div id="Broadcast" class="page hidden">
                 <div class="bg-white shadow-md rounded-lg p-4">
                     <div class="flex justify-between items-center mb-4">
