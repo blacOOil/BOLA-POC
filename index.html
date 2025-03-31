@@ -72,7 +72,6 @@
                             <th class="border border-gray-300 p-2">Line OA Account</th>
                             <th class="border border-gray-300 p-2">Line OA Status</th>
                             <th class="border border-gray-300 p-2">Profile Picture</th>
-                            <th class="border border-gray-300 p-2">Line OA Name</th>
                             <th class="border border-gray-300 p-2">Chatbot Name</th>
                         </tr>
                     </thead>
@@ -83,7 +82,7 @@
                             <td class="border border-gray-300 p-2">
                                 <img src="https://via.placeholder.com/50" alt="Profile Pic" class="rounded-full">
                             </td>
-                            <td class="border border-gray-300 p-2">Line OA 1</td>
+
                             <td class="border border-gray-300 p-2">
                                 <select class="p-1 border border-gray-300 rounded">
                                     <option value="chatbot1">Chatbot 1</option>
@@ -98,7 +97,6 @@
                             <td class="border border-gray-300 p-2">
                                 <img src="https://via.placeholder.com/50" alt="Profile Pic" class="rounded-full">
                             </td>
-                            <td class="border border-gray-300 p-2">Line OA 2</td>
                             <td class="border border-gray-300 p-2">
                                 <select class="p-1 border border-gray-300 rounded">
                                     <option value="chatbot1">Chatbot 1</option>
@@ -111,7 +109,52 @@
                 </table>
             </div>
             <div id="Chatbot" class="page hidden">Chatbot Page</div>
-            <div id="Broadcast" class="page hidden">Broadcast Page</div>
+            <div id="Broadcast" class="page hidden">
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">Broadcast Message List</h3>
+                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                            Create 
+                        </button>
+                    </div>
+            
+                    <!-- Broadcast Message List (File-like structure) -->
+                    <div class="border-t border-gray-300">
+                        <ul id="broadcastMessageList">
+                            <!-- List Item Example -->
+                            <li class="flex items-center justify-between p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-300">
+                                <div class="flex items-center">
+                                    <!-- File Icon (optional, can be replaced with any icon) -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                    <span class="text-sm font-medium text-gray-800">Message 1: This is a broadcast message</span>
+                                </div>
+                                <span class="text-xs text-gray-500">12:30 PM</span>
+                            </li>
+                            <li class="flex items-center justify-between p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-300">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                    <span class="text-sm font-medium text-gray-800">Message 2: Another broadcast message</span>
+                                </div>
+                                <span class="text-xs text-gray-500">1:45 PM</span>
+                            </li>
+                            <li class="flex items-center justify-between p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-300">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                    <span class="text-sm font-medium text-gray-800">Message 3: More important info</span>
+                                </div>
+                                <span class="text-xs text-gray-500">2:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
             <div id="MediaCenter" class="page hidden">
                 <h2 class="text-xl font-bold mb-4">Media Center</h2>
                 
