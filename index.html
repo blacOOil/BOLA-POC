@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Navigation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex">
+    <div class="w-64 h-screen bg-gray-800 text-white p-4 fixed">
+        <h2 class="text-xl font-bold border-b pb-2">BOLA</h2>
+        <nav class="mt-4">
+            <ul>
+                <li class="mb-2"><a href="#home" class="hover:text-gray-300" onclick="showPage('home', 'Home')">Home</a></li>
+                <li class="mb-2"><a href="#Customer" class="hover:text-gray-300" onclick="showPage('Customer', 'Customer Management')">Customer Management</a></li>
+                <li class="mb-2"><a href="#Dashboard" class="hover:text-gray-300" onclick="showPage('Dashboard', 'Dashboard')">Dashboard</a></li>
+                <li class="mb-2"><a href="#OAManagement" class="hover:text-gray-300" onclick="showPage('OAManagement', 'OA Management')">OA Management</a></li>
+                <li class="mb-2"><a href="#Chatbot" class="hover:text-gray-300" onclick="showPage('Chatbot', 'Chatbot')">Chatbot</a></li>
+                <li class="mb-2"><a href="#Broadcast" class="hover:text-gray-300" onclick="showPage('Broadcast', 'Broadcast')">Broadcast</a></li>
+                <li class="mb-2"><a href="#MediaCenter" class="hover:text-gray-300" onclick="showPage('MediaCenter', 'Media Center')">Media Center</a></li>
+                <li class="mb-2"><a href="#Calendar" class="hover:text-gray-300" onclick="showPage('Calendar', 'Calendar')">Calendar</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="ml-64 w-full">
+        <!-- Header Bar -->
+        <div class="bg-gray-100 p-4 flex justify-between items-center shadow-md">
+            <h1 id="pageTitle" class="text-lg font-semibold">Home</h1>
+            <div class="relative">
+                <button class="bg-gray-800 text-white px-4 py-2 rounded-lg">🔔 Notifications</button>
+                <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white shadow-lg p-2 rounded-lg">
+                    <p class="text-gray-700">No new notifications</p>
+                </div>
+            </div>
+        </div>
+        <!-- Page Content -->
+        <div class="p-6">
+            <div id="home" class="page">Hi Page</div>
+            <div id="Customer" class="page hidden">
+                <h2 class="text-xl font-bold mb-4">Customer Management</h2>
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border border-gray-300 p-2">Customer Name</th>
+                            <th class="border border-gray-300 p-2">Customer Gender</th>
+                            <th class="border border-gray-300 p-2">Customer Activity</th>
+                            <th class="border border-gray-300 p-2">Customer Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">John Doe</td>
+                            <td class="border border-gray-300 p-2">Male</td>
+                            <td class="border border-gray-300 p-2">Active</td>
+                            <td class="border border-gray-300 p-2">Verified</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Jane Smith</td>
+                            <td class="border border-gray-300 p-2">Female</td>
+                            <td class="border border-gray-300 p-2">Inactive</td>
+                            <td class="border border-gray-300 p-2">Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="Dashboard" class="page hidden">Dashboard Page</div>
+            <div id="OAManagement" class="page hidden"> 
+                <h2 class="text-xl font-bold mb-4">Line OA Management</h2>
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border border-gray-300 p-2">Line OA Account</th>
+                            <th class="border border-gray-300 p-2">Line OA Status</th>
+                            <th class="border border-gray-300 p-2">Profile Picture</th>
+                            <th class="border border-gray-300 p-2">Line OA Name</th>
+                            <th class="border border-gray-300 p-2">Chatbot Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Account 1</td>
+                            <td class="border border-gray-300 p-2">Active</td>
+                            <td class="border border-gray-300 p-2">
+                                <img src="https://via.placeholder.com/50" alt="Profile Pic" class="rounded-full">
+                            </td>
+                            <td class="border border-gray-300 p-2">Line OA 1</td>
+                            <td class="border border-gray-300 p-2">
+                                <select class="p-1 border border-gray-300 rounded">
+                                    <option value="chatbot1">Chatbot 1</option>
+                                    <option value="chatbot2">Chatbot 2</option>
+                                    <option value="chatbot3">Chatbot 3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Account 2</td>
+                            <td class="border border-gray-300 p-2">Inactive</td>
+                            <td class="border border-gray-300 p-2">
+                                <img src="https://via.placeholder.com/50" alt="Profile Pic" class="rounded-full">
+                            </td>
+                            <td class="border border-gray-300 p-2">Line OA 2</td>
+                            <td class="border border-gray-300 p-2">
+                                <select class="p-1 border border-gray-300 rounded">
+                                    <option value="chatbot1">Chatbot 1</option>
+                                    <option value="chatbot2">Chatbot 2</option>
+                                    <option value="chatbot3">Chatbot 3</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="Chatbot" class="page hidden">Chatbot Page</div>
+            <div id="Broadcast" class="page hidden">Broadcast Page</div>
+            <div id="MediaCenter" class="page hidden">
+                <h2 class="text-xl font-bold mb-4">Media Center</h2>
+                
+                <!-- Filter Dropdown -->
+                <div class="flex justify-between items-center mb-4">
+                    <label for="filter" class="font-semibold">Filter By:</label>
+                    <select id="filter" class="border border-gray-300 p-2 rounded-lg">
+                        <option value="all">All</option>
+                        <option value="image">Images</option>
+                        <option value="video">Videos</option>
+                        <option value="flexMessage">Flex Messages</option>
+                    </select>
+                </div>
+                
+                <!-- Media Categories -->
+                <div class="flex space-x-4">
+                    <!-- Images Category -->
+                    <div id="imagesCategory" class="w-1/3 hidden">
+                        <h3 class="text-lg font-semibold mb-2">Images</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🖼️</span>
+                                <span>Image 1.jpg</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🖼️</span>
+                                <span>Image 2.png</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🖼️</span>
+                                <span>Image 3.jpeg</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Videos Category -->
+                    <div id="videosCategory" class="w-1/3 hidden">
+                        <h3 class="text-lg font-semibold mb-2">Videos</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🎥</span>
+                                <span>Video 1.mp4</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🎥</span>
+                                <span>Video 2.mov</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🎥</span>
+                                <span>Video 3.avi</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Flex Messages Category -->
+                    <div id="flexMessagesCategory" class="w-1/3 hidden">
+                        <h3 class="text-lg font-semibold mb-2">Flex Messages</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">📩</span>
+                                <span>Flex Message 1</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">📩</span>
+                                <span>Flex Message 2</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">📩</span>
+                                <span>Flex Message 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- File Container -->
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                    <div class="flex space-x-4 mb-4">
+                        <div class="w-48 bg-white p-4 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold mb-2">Folder 1</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 1.pdf</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 2.mp4</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-48 bg-white p-4 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold mb-2">Folder 2</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 1.jpg</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 2.png</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-48 bg-white p-4 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold mb-2">Folder 3</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 1.jpg</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 2.jpg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <script>
+                // Simulate file upload
+                function uploadFile() {
+                    const fileInput = document.getElementById('fileInput');
+                    const file = fileInput.files[0];
+                    if (file) {
+                        alert(`File ${file.name} uploaded successfully!`);
+                        fileInput.value = ''; // Clear input field
+                    } else {
+                        alert('Please select a file to upload.');
+                    }
+                }
+            </script>
+            
+            <div id="Calendar" class="page hidden relative">
+              
+                
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <!-- Container for the three columns -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        
+                        <!-- Left Column: Schedule Grid -->
+                        <div class="col-span-2">
+                            <div class="flex justify-between items-center mb-4">
+                                <button onclick="prevWeek()" class="bg-gray-800 text-white px-4 py-2 rounded-lg">&#8592; Previous</button>
+                                <h3 id="weekTitle" class="text-lg font-semibold"></h3>
+                                <button onclick="nextWeek()" class="bg-gray-800 text-white px-4 py-2 rounded-lg">Next &#8594;</button>
+                            </div>
+                            
+                            <div class="grid grid-cols-8 border border-gray-300 rounded-lg">
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Time</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Monday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Tuesday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Wednesday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Thursday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Friday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Saturday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Sunday</div>
+                            </div>
+            
+                            <div id="scheduleGrid"></div>
+                        </div>
+                        
+                        <!-- Middle Column: Placeholder for Additional Content (if any) -->
+                        <div class="hidden md:block">
+                            <div class="p-4 bg-gray-100 rounded-lg">
+                                <!-- Placeholder content for the middle column -->
+                               
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column: Google Calendar Embed -->
+                        <div class="col-span-1">
+                            <div class="absolute top-0 right-0 p-4 bg-white shadow-md rounded-lg">
+                                <h3 class="text-lg font-semibold">Calendar</h3>
+                                <div id="calendarContainer" class="border border-gray-300 p-4 rounded-lg">
+                                    <iframe src="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=America%2FNew_York"
+                                            style="border: 0" width="200" height="200" frameborder="0" scrolling="no"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+    <script>
+        function showPage(pageId, pageTitle) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
+            document.getElementById("pageTitle").textContent = pageTitle;
+        }
+
+        document.querySelector(".bg-gray-800").addEventListener("click", function() {
+            const dropdown = document.getElementById("notificationDropdown");
+            dropdown.classList.toggle("hidden");
+        });
+    </script>
+
+<script>
+    // Function to handle the category filtering
+    document.getElementById('filter').addEventListener('change', function() {
+        const value = this.value;
+        
+        // Hide all categories
+        document.getElementById('imagesCategory').classList.add('hidden');
+        document.getElementById('videosCategory').classList.add('hidden');
+        document.getElementById('flexMessagesCategory').classList.add('hidden');
+        
+        // Show the selected category
+        if (value === 'image' || value === 'all') {
+            document.getElementById('imagesCategory').classList.remove('hidden');
+        }
+        if (value === 'video' || value === 'all') {
+            document.getElementById('videosCategory').classList.remove('hidden');
+        }
+        if (value === 'flexMessage' || value === 'all') {
+            document.getElementById('flexMessagesCategory').classList.remove('hidden');
+        }
+    });
+
+    // Initialize with 'All' selected to show all categories
+    document.getElementById('filter').value = 'all';
+    document.getElementById('filter').dispatchEvent(new Event('change'));
+</script>
+<script>
+    let currentDate = new Date();
+    
+    function generateScheduleGrid() {
+        let scheduleGrid = document.getElementById('scheduleGrid');
+        scheduleGrid.innerHTML = '';
+        for (let hour = 8; hour <= 18; hour++) { // 8 AM - 6 PM
+            let row = document.createElement('div');
+            row.className = 'grid grid-cols-8 border border-gray-300';
+            row.innerHTML = `
+                <div class='border border-gray-300 p-2 text-center bg-gray-200'>${hour}:00</div>
+                <div class='border border-gray-300 p-2' data-day='Monday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Tuesday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Wednesday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Thursday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Friday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Saturday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Sunday' data-time='${hour}'></div>
+            `;
+            scheduleGrid.appendChild(row);
+        }
+    }
+
+    function updateWeekTitle() {
+        let startOfWeek = new Date(currentDate);
+        startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1);
+        let endOfWeek = new Date(startOfWeek);
+        endOfWeek.setDate(endOfWeek.getDate() + 6);
+        document.getElementById('weekTitle').innerText = `${startOfWeek.toDateString()} - ${endOfWeek.toDateString()}`;
+    }
+
+    function prevWeek() {
+        currentDate.setDate(currentDate.getDate() - 7);
+        updateWeekTitle();
+    }
+    
+    function nextWeek() {
+        currentDate.setDate(currentDate.getDate() + 7);
+        updateWeekTitle();
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        generateScheduleGrid();
+        updateWeekTitle();
+    });
+</script>
+</body>
+</html>
