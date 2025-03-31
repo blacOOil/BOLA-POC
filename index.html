@@ -112,7 +112,141 @@
             </div>
             <div id="Chatbot" class="page hidden">Chatbot Page</div>
             <div id="Broadcast" class="page hidden">Broadcast Page</div>
-            <div id="MediaCenter" class="page hidden">Media Center Page</div>
+            <div id="MediaCenter" class="page hidden">
+                <h2 class="text-xl font-bold mb-4">Media Center</h2>
+                
+                <!-- Filter Dropdown -->
+                <div class="flex justify-between items-center mb-4">
+                    <label for="filter" class="font-semibold">Filter By:</label>
+                    <select id="filter" class="border border-gray-300 p-2 rounded-lg">
+                        <option value="all">All</option>
+                        <option value="image">Images</option>
+                        <option value="video">Videos</option>
+                        <option value="flexMessage">Flex Messages</option>
+                    </select>
+                </div>
+                
+                <!-- Media Categories -->
+                <div class="flex space-x-4">
+                    <!-- Images Category -->
+                    <div id="imagesCategory" class="w-1/3 hidden">
+                        <h3 class="text-lg font-semibold mb-2">Images</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🖼️</span>
+                                <span>Image 1.jpg</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🖼️</span>
+                                <span>Image 2.png</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🖼️</span>
+                                <span>Image 3.jpeg</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Videos Category -->
+                    <div id="videosCategory" class="w-1/3 hidden">
+                        <h3 class="text-lg font-semibold mb-2">Videos</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🎥</span>
+                                <span>Video 1.mp4</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🎥</span>
+                                <span>Video 2.mov</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">🎥</span>
+                                <span>Video 3.avi</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Flex Messages Category -->
+                    <div id="flexMessagesCategory" class="w-1/3 hidden">
+                        <h3 class="text-lg font-semibold mb-2">Flex Messages</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">📩</span>
+                                <span>Flex Message 1</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">📩</span>
+                                <span>Flex Message 2</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-gray-300 p-2 rounded">📩</span>
+                                <span>Flex Message 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- File Container -->
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                    <div class="flex space-x-4 mb-4">
+                        <div class="w-48 bg-white p-4 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold mb-2">Folder 1</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 1.pdf</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 2.mp4</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-48 bg-white p-4 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold mb-2">Folder 2</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 1.jpg</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 2.png</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-48 bg-white p-4 rounded-lg shadow-md">
+                            <h3 class="text-lg font-semibold mb-2">Folder 3</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 1.docx</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-gray-300 p-2 rounded">📄</span>
+                                    <span>File 2.mp3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <script>
+                // Simulate file upload
+                function uploadFile() {
+                    const fileInput = document.getElementById('fileInput');
+                    const file = fileInput.files[0];
+                    if (file) {
+                        alert(`File ${file.name} uploaded successfully!`);
+                        fileInput.value = ''; // Clear input field
+                    } else {
+                        alert('Please select a file to upload.');
+                    }
+                }
+            </script>
+            
             <div id="Calendar" class="page hidden">
                 <h2 class="text-xl font-bold mb-4">Calendar</h2>
                 <iframe src="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="1000" height="600" frameborder="0" scrolling="no"></iframe>
@@ -134,5 +268,32 @@
             dropdown.classList.toggle("hidden");
         });
     </script>
+
+<script>
+    // Function to handle the category filtering
+    document.getElementById('filter').addEventListener('change', function() {
+        const value = this.value;
+        
+        // Hide all categories
+        document.getElementById('imagesCategory').classList.add('hidden');
+        document.getElementById('videosCategory').classList.add('hidden');
+        document.getElementById('flexMessagesCategory').classList.add('hidden');
+        
+        // Show the selected category
+        if (value === 'image' || value === 'all') {
+            document.getElementById('imagesCategory').classList.remove('hidden');
+        }
+        if (value === 'video' || value === 'all') {
+            document.getElementById('videosCategory').classList.remove('hidden');
+        }
+        if (value === 'flexMessage' || value === 'all') {
+            document.getElementById('flexMessagesCategory').classList.remove('hidden');
+        }
+    });
+
+    // Initialize with 'All' selected to show all categories
+    document.getElementById('filter').value = 'all';
+    document.getElementById('filter').dispatchEvent(new Event('change'));
+</script>
 </body>
 </html>
