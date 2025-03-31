@@ -247,12 +247,57 @@
                 }
             </script>
             
-            <div id="Calendar" class="page hidden">
-                <h2 class="text-xl font-bold mb-4">Calendar</h2>
-                <iframe src="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="1000" height="600" frameborder="0" scrolling="no"></iframe>
+            <div id="Calendar" class="page hidden relative">
+              
+                
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <!-- Container for the three columns -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        
+                        <!-- Left Column: Schedule Grid -->
+                        <div class="col-span-2">
+                            <div class="flex justify-between items-center mb-4">
+                                <button onclick="prevWeek()" class="bg-gray-800 text-white px-4 py-2 rounded-lg">&#8592; Previous</button>
+                                <h3 id="weekTitle" class="text-lg font-semibold"></h3>
+                                <button onclick="nextWeek()" class="bg-gray-800 text-white px-4 py-2 rounded-lg">Next &#8594;</button>
+                            </div>
+                            
+                            <div class="grid grid-cols-8 border border-gray-300 rounded-lg">
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Time</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Monday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Tuesday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Wednesday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Thursday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Friday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Saturday</div>
+                                <div class="border border-gray-300 p-2 bg-gray-100 font-semibold text-center">Sunday</div>
+                            </div>
+            
+                            <div id="scheduleGrid"></div>
+                        </div>
+                        
+                        <!-- Middle Column: Placeholder for Additional Content (if any) -->
+                        <div class="hidden md:block">
+                            <div class="p-4 bg-gray-100 rounded-lg">
+                                <!-- Placeholder content for the middle column -->
+                               
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column: Google Calendar Embed -->
+                        <div class="col-span-1">
+                            <div class="absolute top-0 right-0 p-4 bg-white shadow-md rounded-lg">
+                                <h3 class="text-lg font-semibold">Calendar</h3>
+                                <div id="calendarContainer" class="border border-gray-300 p-4 rounded-lg">
+                                    <iframe src="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=America%2FNew_York"
+                                            style="border: 0" width="200" height="200" frameborder="0" scrolling="no"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+            
 
     <script>
         function showPage(pageId, pageTitle) {
@@ -294,6 +339,52 @@
     // Initialize with 'All' selected to show all categories
     document.getElementById('filter').value = 'all';
     document.getElementById('filter').dispatchEvent(new Event('change'));
+</script>
+<script>
+    let currentDate = new Date();
+    
+    function generateScheduleGrid() {
+        let scheduleGrid = document.getElementById('scheduleGrid');
+        scheduleGrid.innerHTML = '';
+        for (let hour = 8; hour <= 18; hour++) { // 8 AM - 6 PM
+            let row = document.createElement('div');
+            row.className = 'grid grid-cols-8 border border-gray-300';
+            row.innerHTML = `
+                <div class='border border-gray-300 p-2 text-center bg-gray-200'>${hour}:00</div>
+                <div class='border border-gray-300 p-2' data-day='Monday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Tuesday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Wednesday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Thursday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Friday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Saturday' data-time='${hour}'></div>
+                <div class='border border-gray-300 p-2' data-day='Sunday' data-time='${hour}'></div>
+            `;
+            scheduleGrid.appendChild(row);
+        }
+    }
+
+    function updateWeekTitle() {
+        let startOfWeek = new Date(currentDate);
+        startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1);
+        let endOfWeek = new Date(startOfWeek);
+        endOfWeek.setDate(endOfWeek.getDate() + 6);
+        document.getElementById('weekTitle').innerText = `${startOfWeek.toDateString()} - ${endOfWeek.toDateString()}`;
+    }
+
+    function prevWeek() {
+        currentDate.setDate(currentDate.getDate() - 7);
+        updateWeekTitle();
+    }
+    
+    function nextWeek() {
+        currentDate.setDate(currentDate.getDate() + 7);
+        updateWeekTitle();
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        generateScheduleGrid();
+        updateWeekTitle();
+    });
 </script>
 </body>
 </html>
